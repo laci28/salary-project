@@ -6,6 +6,7 @@ import ro.fasttrackit.salarizare.model.Salary;
 import ro.fasttrackit.salarizare.repository.SalaryRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class SalaryService {
@@ -26,5 +27,16 @@ public class SalaryService {
 
     public Salary add(Salary salary) {
         return repository.save(salary);
+    }
+
+    public Salary replace(Integer salaryId, Salary salary) {
+        salary.setId(salaryId);
+        return repository.save(salary);
+    }
+
+    public Salary delete(Integer salaryId) {
+        Optional<Salary> dbSalary = repository.findById(salaryId);
+        dbSalary.ifPresent(repository::delete);
+        return dbSalary.orElse(null);
     }
 }

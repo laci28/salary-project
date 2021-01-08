@@ -13,6 +13,7 @@
 <body>
 <div class="container">
     <nav class="navbar navbar-expand-sm bg-primary navbar-dark">
+
         <a class="navbar-brand" href="#">Salarizare</a>
 
         <ul class="navbar-nav">
@@ -25,14 +26,20 @@
             <li class="nav-item">
                 <a class="nav-link" href="#">Fluturas</a>
             </li>
+            <p style="visibility: hidden;">
+                aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+            </p>
         </ul>
+        <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" id="myInput" type="text" placeholder="Cautare..">
+        </form>
     </nav>
 </div>
 
 <div class="container">
-    <button class="btn btn-primary m-2" data-toggle="modal" data-target="#myModal">Adaugare salariat</button>
+    <button class="btn btn-primary m-2" data-toggle="modal" data-target="#salaryModal">Adaugare salariat</button>
 
-    <table class="table table-striped">
+    <table class="table table-striped table-bordered table-hover">
         <thead>
         <tr>
             <th>Numele</th>
@@ -44,7 +51,7 @@
             <th>Modificare/Stergere</th>
         </tr>
         </thead>
-        <tbody>
+        <tbody id="salaryData">
         <tr data-th-each="salary:${salaries}">
             <td>
                 <a class="nav-link text-dark" data-th-text="${salary.name}"
@@ -55,10 +62,9 @@
             <td data-th-text="${salary.hoursWorked}"></td>
             <td data-th-text="${salary.overtime}"></td>
             <td data-th-text="${salary.netSalary}"></td>
-            <td style="text-align:center" ; data-th-id="${salary.id}">
-                <i class="fas fa-edit mr-2" data-toggle="modal" data-target="#myModal"
-                   onclick="openEditSalary()"></i>
-                <i class="fas fa-trash mr-2"></i>
+            <td style="text-align: center" data-th-id="${salary.id}">
+                <i class="fas fa-edit mr-2" data-target="#salaryModal" data-toggle="modal"></i>
+                <i class="fas fa-trash-alt"></i>
             </td>
         </tr>
         </tbody>
@@ -66,7 +72,7 @@
 </div>
 
 <div class="container" data-th-if="${showDetails}">
-    <div class="card">
+    <div class="card" style="width:350px">
         <div class="card-header">
             Fluturas pe luna <span data-th-text="${selectedSalary.month}"></span>
             <span class="pull-right clickable close-icon" data-effect="fadeOut"><i class="fa fa-times"></i></span>
@@ -91,7 +97,7 @@
     </div>
 </div>
 
-<div class="modal" id="myModal">
+<div class="modal fade" id="salaryModal">
     <div class="modal-dialog">
         <div class="modal-content">
 
@@ -138,7 +144,7 @@
 </html>
 
 <script>
-    $('.close-icon').on('click',function() {
+$('.close-icon').on('click',function() {
   $(this).closest('.card').fadeOut();
-})
+});
 </script>
