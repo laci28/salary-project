@@ -11,7 +11,7 @@
     <script src="/salaries.js"></script>
     <link rel="shortcut icon" href="./favicon.png"></head>
 <body>
-<div class="container">
+<div class="container-fluid">
     <nav class="navbar navbar-expand-sm bg-primary navbar-dark">
 
         <a class="navbar-brand" href="#">Salarizare</a>
@@ -47,6 +47,7 @@
             <th>Salariu Brut</th>
             <th>Ore lucrate</th>
             <th>Ore suplimentare</th>
+            <th>Persoane in intretinere</th>
             <th>Salariu NET</th>
             <th>Modificare/Stergere</th>
         </tr>
@@ -61,6 +62,7 @@
             <td data-th-text="${salary.grossSalary}"></td>
             <td data-th-text="${salary.hoursWorked}"></td>
             <td data-th-text="${salary.overtime}"></td>
+            <td data-th-text="${salary.persoaneInIntretinere}"></td>
             <td data-th-text="${salary.netSalary}"></td>
             <td style="text-align: center" data-th-id="${salary.id}">
                 <i class="fas fa-edit mr-2" data-target="#salaryModal" data-toggle="modal"></i>
@@ -72,7 +74,7 @@
 </div>
 
 <div class="container" data-th-if="${showDetails}">
-    <div class="card" style="width:350px">
+    <div class="card" style="width:440px">
         <div class="card-header">
             Fluturas pe luna <span data-th-text="${selectedSalary.month}"></span>
             <span class="pull-right clickable close-icon" data-effect="fadeOut"><i class="fa fa-times"></i></span>
@@ -86,8 +88,9 @@
                 </li>
                 <li><span>Ore lucrate: </span><span data-th-text="${selectedSalary.hoursWorked}"></span></li>
                 <li><span>Ore suplimentare: </span><span data-th-text="${selectedSalary.overtime}"></span></li>
-                <li><span>CAS: </span><span data-th-text="${selectedSalary.cas}"></span></span><span> RON</span></li>
-                <li><span>CASS: </span><span data-th-text="${selectedSalary.cass}"></span></span><span> RON</span></li>
+                <li><span>Asigurari Sociale (CAS): </span><span data-th-text="${selectedSalary.cas}"></span></span><span> RON</span></li>
+                <li><span>Asigurari Sociale de Sanatate (CASS): </span><span data-th-text="${selectedSalary.cass}"></span></span><span> RON</span></li>
+                <li><span>Deducere personala: </span><span data-th-text="${selectedSalary.deducerePersonala}"></span></span><span> RON</span></li>
                 <li><span>Impozit pe venit: </span><span data-th-text="${selectedSalary.salaryTax}"></span></span>
                     <span> RON</span></li>
                 <li><span>Salariu Net: </span><span data-th-text="${selectedSalary.netSalary}"></span><span> RON</span>
@@ -126,6 +129,10 @@
                 <div class="form-group">
                     <label for="modal-salaries-name">Ore suplimentare</label>
                     <input type="text" id="modal-salaries-overtime" class="form-control"/>
+                </div>
+                <div class="form-group">
+                    <label for="modal-salaries-persoaneInIntretinere">Persoane in intretinere</label>
+                    <input type="text" id="modal-salaries-persoaneInIntretinere" class="form-control"/>
                 </div>
 
                 <div class="modal-footer">

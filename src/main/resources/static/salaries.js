@@ -4,6 +4,7 @@ function addSalary(){
     const grossSalary = $('#modal-salaries-grossSalary').val();
     const hoursWorked = $('#modal-salaries-hoursWorked').val();
     const overtime = $('#modal-salaries-overtime').val();
+    const persoaneInIntretinere = $('#modal-salaries-persoaneInIntretinere').val();
 
     fetch('/api/salaries', {
         method:'POST',
@@ -12,7 +13,8 @@ function addSalary(){
             position: position,
             grossSalary: grossSalary,
             hoursWorked: hoursWorked,
-            overtime: overtime
+            overtime: overtime,
+            persoaneInIntretinere: persoaneInIntretinere
         }),
         headers:{
         'Content-Type':'application/json'
@@ -27,6 +29,7 @@ function editSalary(salaryIdToEdit) {
     const grossSalary = $('#modal-salaries-grossSalary').val();
     const hoursWorked = $('#modal-salaries-hoursWorked').val();
     const overtime = $('#modal-salaries-overtime').val();
+    const persoaneInIntretinere = $('#modal-salaries-persoaneInIntretinere').val();
 
     fetch('/api/salaries/' + salaryIdToEdit, {
         method: 'PUT',
@@ -35,7 +38,8 @@ function editSalary(salaryIdToEdit) {
             position: position,
             grossSalary: grossSalary,
             hoursWorked: hoursWorked,
-            overtime: overtime
+            overtime: overtime,
+            persoaneInIntretinere: persoaneInIntretinere
         }),
         headers: {
             'Content-Type': 'application/json'
@@ -61,12 +65,14 @@ $(document).ready(() => {
         const grossSalary = row.children[2].innerText;
         const hoursWorked = row.children[3].innerText;
         const overtime = row.children[4].innerText;
+        const persoaneInIntretinere = row.children[5].innerText;
 
         $('#modal-salaries-name').val(name);
         $('#modal-salaries-functions').val(position);
         $('#modal-salaries-grossSalary').val(grossSalary);
         $('#modal-salaries-hoursWorked').val(hoursWorked);
         $('#modal-salaries-overtime').val(overtime);
+        $('#modal-salaries-persoaneInIntretinere').val(persoaneInIntretinere);
 
     });
 
