@@ -19,7 +19,13 @@ function addSalary(){
         headers:{
         'Content-Type':'application/json'
         }
-    }).then(response => location.reload());
+    }).then(response => {
+            if (response.ok) {
+                location.reload()
+            } else {
+                alert()
+            }
+    });
 }
 
 
@@ -47,15 +53,16 @@ function editSalary(salaryIdToEdit) {
     }).then(response => location.reload());
 }
 
-function addSalary() {
-    if (salaryIdToEdit) {
-        editSalary(salaryIdToEdit);
-    } else {
-        addNew();
-    }
-}
-
 $(document).ready(() => {
+    let salaryIdToEdit = null;
+
+    $('#add-salaries-button').click(function () {
+        if (salaryIdToEdit) {
+            editSalary(salaryIdToEdit);
+        } else {
+            addSalary();
+        }
+    });
 
     $('.fa-edit').click(function () {
         salaryIdToEdit = this.parentElement.id;

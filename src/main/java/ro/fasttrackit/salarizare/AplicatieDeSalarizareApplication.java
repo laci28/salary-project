@@ -7,7 +7,6 @@ import org.springframework.context.annotation.Bean;
 import ro.fasttrackit.salarizare.model.Month;
 import ro.fasttrackit.salarizare.model.Position;
 import ro.fasttrackit.salarizare.model.Salary;
-import ro.fasttrackit.salarizare.model.StateBudget;
 import ro.fasttrackit.salarizare.repository.SalaryRepository;
 
 import java.util.List;
