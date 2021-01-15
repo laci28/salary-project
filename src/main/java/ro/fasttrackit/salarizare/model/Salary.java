@@ -13,8 +13,10 @@ public class Salary {
     private String name;
     private Position position;
     private Month month;
+    private int grossSalaryWithOvertime;
     private int grossSalary;
     private int hoursWorked;
+    private int daysWorked;
     private int overtime;
     private int persoaneInIntretinere;
 
@@ -32,11 +34,13 @@ public class Salary {
         this.hoursWorked = hoursWorked;
         this.overtime = overtime;
         this.persoaneInIntretinere = persoaneInIntretinere;
-        cas = (int) Math.ceil(grossSalary * 0.1);
-        cass = (int) Math.ceil(grossSalary * 0.25);
-        deducerePersonala = deducere(grossSalary, persoaneInIntretinere);
-        salaryTax = (int) Math.ceil((grossSalary - cas - cass - deducerePersonala) * 0.1);
-        netSalary = grossSalary - cas - cass - salaryTax;
+        daysWorked = hoursWorked / 8;
+        grossSalaryWithOvertime = (((grossSalary / hoursWorked) * overtime) * 2) + grossSalary;
+        cas = (int) Math.ceil(grossSalaryWithOvertime * 0.1);
+        cass = (int) Math.ceil(grossSalaryWithOvertime * 0.25);
+        deducerePersonala = deducere(grossSalaryWithOvertime, persoaneInIntretinere);
+        salaryTax = (int) Math.ceil((grossSalaryWithOvertime - cas - cass - deducerePersonala) * 0.1);
+        netSalary = grossSalaryWithOvertime - cas - cass - salaryTax;
     }
 
     public Salary() {
@@ -146,6 +150,22 @@ public class Salary {
         this.deducerePersonala = deducerePersonala;
     }
 
+    public int getGrossSalaryWithOvertime() {
+        return grossSalaryWithOvertime;
+    }
+
+    public void setGrossSalaryWithOvertime(int grossSalaryWithOvertime) {
+        this.grossSalaryWithOvertime = grossSalaryWithOvertime;
+    }
+
+    public int getDaysWorked() {
+        return daysWorked;
+    }
+
+    public void setDaysWorked(int daysWorked) {
+        this.daysWorked = daysWorked;
+    }
+
     @Override
     public String toString() {
         return "Salary{" +
@@ -153,8 +173,10 @@ public class Salary {
                 ", name='" + name + '\'' +
                 ", position=" + position +
                 ", month=" + month +
+                ", grossSalaryWithOvertime=" + grossSalaryWithOvertime +
                 ", grossSalary=" + grossSalary +
                 ", hoursWorked=" + hoursWorked +
+                ", daysWorked=" + daysWorked +
                 ", overtime=" + overtime +
                 ", persoaneInIntretinere=" + persoaneInIntretinere +
                 ", cas=" + cas +
@@ -164,7 +186,7 @@ public class Salary {
                 ", netSalary=" + netSalary +
                 '}';
     }
-
+    
     public int deducere(int grossSalary, int persoaneInIntretinere) {
         double deducere = 0;
         if (grossSalary <= 1950) {

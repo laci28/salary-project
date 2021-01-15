@@ -23,7 +23,7 @@ public class AplicatieDeSalarizareApplication {
 	CommandLineRunner atStartup(SalaryRepository repo) {
 		return args -> {
 			repo.saveAll(List.of(
-					new Salary("Buda Teofil", Position.PROGRAMATOR, Month.DECEMBRIE, 3760, 168, 0,0),
+					new Salary("Buda Teofil", Position.PROGRAMATOR, Month.DECEMBRIE, 3760, 168, 5,0),
 					new Salary("Petrila Ionel", Position.SOFER, Month.DECEMBRIE, 3588, 168, 0,1),
 					new Salary("Coman Viorel", Position.MANIPULANT_MARFA, Month.DECEMBRIE, 4114, 168, 0, 0),
 					new Salary("Sirbu Cosmin", Position.TEHNICIAN, Month.DECEMBRIE, 2230, 168, 0, 1),
