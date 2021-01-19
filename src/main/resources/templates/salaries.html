@@ -29,16 +29,8 @@
 <div class="container-fluid">
     <nav class="navbar navbar-expand-sm bg-primary navbar-dark">
 
-        <a class="navbar-brand" href="#">Salarizare</a>
+        <a class="navbar-brand" href="/salaries">STAT DE PLATA - SALARIATI PERMANENTI </a>
 
-        <ul class="navbar-nav">
-            <li class="nav-item">
-                <a class="nav-link" href="#">Salarii</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">STAT</a>
-            </li>
-        </ul>
         <form class="form-inline my-2 my-lg-0">
             <input class="form-control mr-sm-2" id="myInput" type="text" placeholder="Cautare..">
         </form>
@@ -82,6 +74,7 @@
         </tbody>
     </table>
 </div>
+
 <!--FLUTURAS-->
 <div class="container" data-th-if="${showDetails}">
     <div class="card" style="width:440px">
@@ -99,13 +92,13 @@
                 <li><span>Zile/Ore lucrate: </span><span data-th-text="${selectedSalary.daysWorked}"></span> / <span data-th-text="${selectedSalary.hoursWorked}"></span></li>
                 <li><span>Ore suplimentare: </span><span data-th-text="${selectedSalary.overtime}"></span></li>
                 <li><span>Salariu brut: </span><span data-th-text="${selectedSalary.grossSalaryWithOvertime}"> RON</span></li>
-                <li><span>Asigurari Sociale (CAS): </span><span data-th-text="${selectedSalary.cas}"></span></span>
+                <li><span>Asigurari Sociale (CAS): </span><span data-th-text="${selectedSalary.cas}"></span>
                     <span> RON</span></li>
-                <li><span>Asigurari Sociale de Sanatate (CASS): </span><span
-                        data-th-text="${selectedSalary.cass}"></span></span><span> RON</span></li>
-                <li><span>Deducere personala: </span><span
-                        data-th-text="${selectedSalary.deducerePersonala}"></span></span><span> RON</span></li>
-                <li><span>Impozit pe venit: </span><span data-th-text="${selectedSalary.salaryTax}"></span></span>
+                <li><span>Asigurari Sociale de Sanatate (CASS): </span>
+                    <span data-th-text="${selectedSalary.cass}"></span><span> RON</span></li>
+                <li><span>Deducere personala: </span>
+                    <span data-th-text="${selectedSalary.deducerePersonala}"></span><span> RON</span></li>
+                <li><span>Impozit pe venit: </span><span data-th-text="${selectedSalary.salaryTax}"></span>
                     <span> RON</span></li>
                 <li><span>Salariu Net: </span><span data-th-text="${selectedSalary.netSalary}"></span><span> RON</span>
                 </li>

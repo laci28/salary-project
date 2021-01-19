@@ -26,12 +26,18 @@ public class SalaryService {
     }
 
     public Salary add(Salary salary) {
-        return repository.save(salary);
+        return repository.save(new Salary(salary.getName(), salary.getPosition(), salary.getMonth(),
+                salary.getGrossSalary(), salary.getHoursWorked(), salary.getOvertime(),
+                salary.getPersoaneInIntretinere()));
     }
 
     public Salary replace(Integer salaryId, Salary salary) {
         salary.setId(salaryId);
-        return repository.save(salary);
+        Optional<Salary> dbSalary = repository.findById(salaryId);
+        dbSalary.ifPresent(repository::delete);
+        return repository.save(new Salary(salary.getName(), salary.getPosition(), salary.getMonth(),
+                salary.getGrossSalary(), salary.getHoursWorked(), salary.getOvertime(),
+                salary.getPersoaneInIntretinere()));
     }
 
     public Salary delete(Integer salaryId) {

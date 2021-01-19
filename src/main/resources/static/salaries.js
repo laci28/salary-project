@@ -28,7 +28,6 @@ function addSalary(){
     });
 }
 
-
 function editSalary(salaryIdToEdit) {
     const name = $('#modal-salaries-name').val();
     const position = $('#modal-salaries-functions').val();
@@ -50,7 +49,7 @@ function editSalary(salaryIdToEdit) {
         headers: {
             'Content-Type': 'application/json'
         }
-    }).then(response => location.reload());
+    }).then(response => window.location.href = "/salaries");
 }
 
 $(document).ready(() => {
@@ -67,12 +66,12 @@ $(document).ready(() => {
     $('.fa-edit').click(function () {
         salaryIdToEdit = this.parentElement.id;
         const row = this.parentElement.parentElement;
-        const name = row.children[0].innerText;
-        const position = row.children[1].innerText;
-        const grossSalary = row.children[2].innerText;
-        const hoursWorked = row.children[3].innerText;
-        const overtime = row.children[4].innerText;
-        const persoaneInIntretinere = row.children[5].innerText;
+        const name = row.children[0].children[0].innerText;
+        const position = row.children[0].children[1].innerText;
+        const grossSalary = row.children[1].innerText;
+        const hoursWorked = row.children[2].innerText;
+        const overtime = row.children[3].innerText;
+        const persoaneInIntretinere = row.children[4].innerText;
 
         $('#modal-salaries-name').val(name);
         $('#modal-salaries-functions').val(position);
@@ -84,14 +83,16 @@ $(document).ready(() => {
     });
 
     $('.fa-trash-alt').click(function () {
+        var result = confirm("Sigur doriti sa stergeti salariatul?");
+            if(result){
         const toDelete = this.parentElement.id;
         fetch('/api/salaries/' + toDelete, {
             method: 'DELETE'
-        }).then(response => location.reload());
+        }).then(response => window.location.href = "/salaries");}else{
+         response => window.location.href = "/salaries";}
 
     });
 });
-
 
 $(document).ready(function(){
   $("#myInput").on("keyup", function() {
