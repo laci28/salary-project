@@ -1,11 +1,11 @@
 package ro.fasttrackit.salarizare.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ro.fasttrackit.salarizare.exceptions.ResourceNotFoundException;
 import ro.fasttrackit.salarizare.model.Salary;
 import ro.fasttrackit.salarizare.repository.SalaryRepository;
 
-import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -16,7 +16,7 @@ public class SalaryService {
         this.repository = repository;
     }
 
-    public List<Salary> getAll() {
+    public Iterable<Salary> getAll() {
         return repository.findAll();
     }
 
