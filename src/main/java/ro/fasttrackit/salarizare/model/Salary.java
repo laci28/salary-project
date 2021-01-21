@@ -2,13 +2,12 @@ package ro.fasttrackit.salarizare.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
 public class Salary {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue
     private int id;
 
     private String name;
@@ -188,7 +187,7 @@ public class Salary {
                 '}';
     }
 
-    public int deducere(int grossSalary, int persoaneInIntretinere) {
+    private int deducere(int grossSalary, int persoaneInIntretinere) {
         double deducere = 0;
         if (grossSalary <= 1950) {
             if (persoaneInIntretinere == 0) {

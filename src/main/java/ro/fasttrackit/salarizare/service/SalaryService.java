@@ -1,6 +1,6 @@
 package ro.fasttrackit.salarizare.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import ro.fasttrackit.salarizare.exceptions.ResourceNotFoundException;
 import ro.fasttrackit.salarizare.model.Salary;
@@ -17,7 +17,7 @@ public class SalaryService {
     }
 
     public Iterable<Salary> getAll() {
-        return repository.findAll();
+        return repository.findAll(Sort.by("name"));
     }
 
     public Salary getOne(Integer salaryId) {
@@ -26,9 +26,10 @@ public class SalaryService {
     }
 
     public Salary add(Salary salary) {
-        return repository.save(new Salary(salary.getName(), salary.getPosition(), salary.getMonth(),
+        Salary s = new Salary(salary.getName(), salary.getPosition(), salary.getMonth(),
                 salary.getGrossSalary(), salary.getHoursWorked(), salary.getOvertime(),
-                salary.getPersoaneInIntretinere()));
+                salary.getPersoaneInIntretinere());
+        return repository.save(s);
     }
 
     public Salary replace(Integer salaryId, Salary salary) {

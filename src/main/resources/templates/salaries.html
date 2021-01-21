@@ -22,6 +22,7 @@
     th {
         text-align: center;
     }
+
     </style>
 </head>
 <body>
@@ -57,7 +58,7 @@
             <td>
                 <a class="nav-link text-dark" data-th-text="${salary.name}"
                    data-th-href="'/salaries/' + ${salary.id}"
-                    style="font-size: 18px; font-weight: bold; margin-top: -16px; margin-bottom: -19px; margin-left: -10px;"></a>
+                   style="font-size: 18px; font-weight: bold; margin-top: -16px; margin-bottom: -19px; margin-left: -10px;"></a>
                 <a class="position" data-th-text="${salary.position}"></a>
             </td>
             <td data-th-text="${salary.grossSalary}" class="number"></td>
@@ -88,9 +89,11 @@
                 <li><span>Salariu de baza: </span><span
                         data-th-text="${selectedSalary.grossSalary}"></span><span> RON</span>
                 </li>
-                <li><span>Zile/Ore lucrate: </span><span data-th-text="${selectedSalary.daysWorked}"></span> / <span data-th-text="${selectedSalary.hoursWorked}"></span></li>
+                <li><span>Zile/Ore lucrate: </span><span data-th-text="${selectedSalary.daysWorked}"></span> / <span
+                        data-th-text="${selectedSalary.hoursWorked}"></span></li>
                 <li><span>Ore suplimentare: </span><span data-th-text="${selectedSalary.overtime}"></span></li>
-                <li><span>Salariu brut: </span><span data-th-text="${selectedSalary.grossSalaryWithOvertime}"> RON</span></li>
+                <li><span>Venit brut realizat: </span><span data-th-text="${selectedSalary.grossSalaryWithOvertime}"> RON</span>
+                </li>
                 <li><span>Asigurari Sociale (CAS): </span><span data-th-text="${selectedSalary.cas}"></span>
                     <span> RON</span></li>
                 <li><span>Asigurari Sociale de Sanatate (CASS): </span>
@@ -99,7 +102,8 @@
                     <span data-th-text="${selectedSalary.deducerePersonala}"></span><span> RON</span></li>
                 <li><span>Impozit pe venit: </span><span data-th-text="${selectedSalary.salaryTax}"></span>
                     <span> RON</span></li>
-                <li><span>Salariu Net: </span><span data-th-text="${selectedSalary.netSalary}"></span><span> RON</span>
+                <li style="font-weight: bold"><span>Salariu Net: </span><span
+                        data-th-text="${selectedSalary.netSalary}"></span><span> RON</span>
                 </li>
             </ul>
         </div>
@@ -158,11 +162,3 @@
 
 </body>
 </html>
-
-<script>
-$('.close-icon').on('click',function() {
-  $(this).closest('.card').fadeOut();
-});
-
-
-</script>

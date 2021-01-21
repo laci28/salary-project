@@ -101,4 +101,7 @@ $(document).ready(function(){
       $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
     });
   });
+  $('.close-icon').on('click',function() {
+    $(this).closest('.card').fadeOut();
+  });
 });
